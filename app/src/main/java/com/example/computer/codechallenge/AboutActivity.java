@@ -24,33 +24,25 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        webView = findViewById(R.id.webView);
+        pb = findViewById(R.id.progress_bar);
 
         checkNetworkState();
 
-        webView = findViewById(R.id.webView);
         // Checking saved state instance
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState);
             pb.setVisibility(View.GONE);
+            webView.getSettings().setJavaScriptEnabled(true);
+            webSettings();
         } else {
             webView.getSettings().setJavaScriptEnabled(true);
-            webView.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                    handler.proceed();
-                }
-
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    pb = findViewById(R.id.progress_bar);
-                    pb.setVisibility(View.GONE);
-                }
-            });
+            webSettings();
             webView.loadUrl("https://andela.com/alc/");
         }
     }
 
+    // Enable navigation in the WebView
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
@@ -76,11 +68,27 @@ public class AboutActivity extends AppCompatActivity {
             Button retry = findViewById(R.id.button_retry);
             Group noNetworkGroup = findViewById(R.id.group);
             noNetworkGroup.setVisibility(View.VISIBLE);
+            webView.setVisibility(View.GONE);
             retry.setOnClickListener(view -> {
                 recreate();
-                pb.setVisibility(View.GONE);
+                webView.getSettings().setJavaScriptEnabled(true);
+                webSettings();
             });
-            webView.setVisibility(View.GONE);
         }
+    }
+
+    private void webSettings() {
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                pb.setVisibility(View.GONE);
+            }
+        });
     }
 }
