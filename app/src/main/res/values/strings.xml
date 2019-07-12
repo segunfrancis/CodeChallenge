@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Code Challenge</string>
+    <string name="my_name">Segun Francis</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="track">Track: Android Track</string>
+    <string name="country">Country: Nigeria</string>
+    <string name="email_address">Email: francis4dblues@gmail.com</string>
+    <string name="phone_number">Phone Number: +234807684030</string>
+    <string name="slack_username">Slack Username: @ShockWave</string>
+    <string name="welcome_message">Welcome to ALC 4.0</string>
+    <string name="about_alc">About ALC</string>
+    <string name="my_profile">My Profile</string>
+    <string name="error_message">No Internet!</string>
+    <string name="retry">Retry</string>
 </resources>

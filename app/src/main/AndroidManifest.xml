@@ -14,11 +14,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ProfileActivity"
-            android:label="My Profile"
+            android:label="@string/my_profile"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AboutActivity"
-            android:label="About ALC"
+            android:label="@string/about_alc"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

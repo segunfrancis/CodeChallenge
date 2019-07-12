@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Large Text Style -->
+    <style name="TextLarge" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:fontFamily">@font/aldrich</item>
+    </style>
+
+    <!-- Medium Text Style -->
+    <style name="TextMedium" parent="TextAppearance.AppCompat.Large">
+        <item name="android:fontFamily">@font/aldrich</item>
+    </style>
+
+    <!-- Small Text Style -->
+    <style name="TextSmall" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:fontFamily">@font/aldrich</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+    </style>
 </resources>
