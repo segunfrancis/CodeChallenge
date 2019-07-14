@@ -52,12 +52,14 @@ public class AboutActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    // Saving instance state
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         webView.saveState(outState);
         super.onSaveInstanceState(outState);
     }
 
+    // Checking Network Status
     private void checkNetworkState() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = null;
@@ -77,6 +79,7 @@ public class AboutActivity extends AppCompatActivity {
         }
     }
 
+    // Setting WebView client and overriding SSL error
     private void webSettings() {
         webView.setWebViewClient(new WebViewClient() {
             @Override
